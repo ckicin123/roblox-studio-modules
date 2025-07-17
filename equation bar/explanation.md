@@ -105,7 +105,7 @@ end of notes
 
 (using less thick line so shape is easier to see)
 
-<img width="688" height="679" alt="image" src="https://github.com/user-attachments/assets/023948b0-c237-4dac-bed1-18fbcd5c1ec8" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/023948b0-c237-4dac-bed1-18fbcd5c1ec8" />
 
 
 you can see it doesn't resemble a cubic
@@ -148,7 +148,7 @@ end
 
 this gives
 
-<img width="661" height="692" alt="image" src="https://github.com/user-attachments/assets/05b095ac-7207-4ae1-8388-c776adf315df" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/05b095ac-7207-4ae1-8388-c776adf315df" />
 
 which now shows the left side of the cubic but is very high up, from here we can shift all y coordinates down by 0.5 (half way down the frame) 
 so what would usually be at the origin of a cubic is at the center of the frame
@@ -166,8 +166,92 @@ end
 
 which gives
 
-<img width="680" height="661" alt="image" src="https://github.com/user-attachments/assets/c1ae6195-3e2a-4bb1-876c-dbdd5ca8b520" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/c1ae6195-3e2a-4bb1-876c-dbdd5ca8b520" />
 
-which is much closer to the desired result
+which is closer to the desired result
 
+to make the graph more stretched out in the y axis we can think of such as the following
 
+y=x^3 current graph
+y=1.5x^3 stretched in y axis by a factor of 1.5
+
+the factor in this case has to be kept small as if y goes above 1 or below 0 it exits the frame
+
+and we can apply the same logic here
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		i, --x coordinate
+		0.5+(1.5*(i-0.5))^3 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+
+and this gives:
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/93e8e4da-d8f2-439e-84cc-c28339cf4828" />
+
+however close this is to the desired result, the graph exits the frame on the left and right side, which means all x coordinates must be pulled toward the middle
+
+take x to be the x coordinate
+
+x-0.5 is the displacement from the x coordinate to the center
+we want this displacement to decrease by some constant factor
+
+so we want the displacement from the 0.5 point to be constant*(x-0.5)
+
+which means that if you were to set each x coordinate to
+constant*(x-0.5)+0.5
+
+you would get this result giving the function
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		0.8*(i-0.5)+0.5, --x coordinate
+		0.5+(1.5*(i-0.5))^3 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+
+giving the graph:
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/0d0e142a-4b56-4a68-890c-b0c114e1d5ac" />
+
+which is now well within the frame
+
+then to flip the y coordinate all you have to do is
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		0.8*(i-0.5)+0.5, --x coordinate
+		0.5-(1.5*(i-0.5))^3 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+and you get the cubic you want
+
+now if you wanted to make a sine wave you could use the following function:
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		0.8*(i-0.5)+0.5, --x coordinate
+		0.5-(0.3*math.sin((i-0.5)*2*math.pi)) --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end
+```
+
+giving
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/292a59a1-9edb-4916-a79a-9b51fb46ae6b" />
