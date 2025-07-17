@@ -287,4 +287,35 @@ will set the bar to what represents 0.5 for that bar.
 
 making this work with circles or spirals is dramatically easy, writing the function for a circle is simply
 
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		(0.3*math.cos(i*math.pi*2))+0.5, --x coordinate
+		(0.3*math.sin(i*math.pi*2))+0.5 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+
+(a circle is self explanatory so an image won't be shown)
+
+and a spiral is:
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		(i*0.4*math.cos(i*math.pi*2))+0.5, --x coordinate
+		(i*0.4*math.sin(i*math.pi*2))+0.5 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+
+giving
+
+<img width="640" height="641" alt="image" src="https://github.com/user-attachments/assets/08003116-0ae2-40b2-b240-c1a236d1918f" />
+
+
 you can experiment with it to become more familiar with it, if you read this far you actually might. to be honest, didn't expect anyone to read this. hope you enjoy!
