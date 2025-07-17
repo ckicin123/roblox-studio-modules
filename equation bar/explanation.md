@@ -103,8 +103,71 @@ y coordinates go from top to bottom instead, 0 on the y is the top, 1 on the y i
 ```
 end of notes
 
-<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/7a237bf9-bd99-40c2-bfb4-e86cfe0d9cc3" />
+(using less thick line so shape is easier to see)
+
+<img width="688" height="679" alt="image" src="https://github.com/user-attachments/assets/023948b0-c237-4dac-bed1-18fbcd5c1ec8" />
+
 
 you can see it doesn't resemble a cubic
 
-note that when getting the value of 
+(function again for reference)
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		i, --x coordinate
+		i^3 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+
+when getting the coordinate of the 0 value point, you'd want it to be something around (0,1) which is the bottom right,
+but the function returns (0,0) which is the top left
+it's also not going to take any negative values of the cubic as the perameter passed in will always be from 0 to 1
+so the whole left side of the cubic is ignored
+
+so this shape is the right side of a cubic flipped upside down (cuz y is flipped)
+
+for now we will ignore this as it can be flipped easily at the end
+
+to show the left side of the cubic we want the cubic to be shifted 0.5 to the right
+which can be done by making the following change
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		i, --x coordinate
+		(i-0.5)^3 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+
+this gives
+
+<img width="661" height="692" alt="image" src="https://github.com/user-attachments/assets/05b095ac-7207-4ae1-8388-c776adf315df" />
+
+which now shows the left side of the cubic but is very high up, from here we can shift all y coordinates down by 0.5 (half way down the frame) 
+so what would usually be at the origin of a cubic is at the center of the frame
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		i, --x coordinate
+		0.5+(i-0.5)^3 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+
+which gives
+
+<img width="680" height="661" alt="image" src="https://github.com/user-attachments/assets/c1ae6195-3e2a-4bb1-876c-dbdd5ca8b520" />
+
+which is much closer to the desired result
+
+
