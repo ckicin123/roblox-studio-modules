@@ -1,6 +1,8 @@
 #  before you complain about small mishaps
 this has only had 1 version made of it, and i am aware of the mishaps. they aren't huge but they are definitely there. 
 if i get the time and feel like it i will fix it. but lets be honest. nobody is using this even though it's cool.
+
+(game on roblox containing a showcase of it: https://www.roblox.com/games/95444323367396/)
 # introduction of concept
 
 you will notice that in every video game almost all progression bars are straight lines, this includes health bars, stamina bar, mana bars, loading bars. so on..
