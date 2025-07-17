@@ -58,6 +58,53 @@ local barVal=equationBarMod.initEquationBar(
 	Color3.new(1,1,1), --white
 	100, --accuracy (number of frames used)
 	equationBarFunction, --function used to define the cubic
-	1
+	1 --initial value of bar
 )
 ```
+which took no more than a few minutes to figure out the function at the top.
+
+to understand what's going on with that function lets take a simpler example
+
+```lua
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		i, --x coordinate
+		i^3 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end	
+```
+
+this function is meant to define the shape of the line drawn
+the function is called with a single parameter (being i) being a value between 0 and 1 inclusive
+0 represents when the bar is at value 0 (empty)
+1 represents when the bar is at value 1 (full)
+0.5 represents when the bar is at value 0.5 (half full)
+
+and it's more or less continuous values depending on the accuracy level you set
+
+the expected return is a table with 2 elements, an x and y coordinate. cororrsponding to a point representing the value
+
+for the function above, when the module is getting the coordinate of the point that is AT value 1. it will call the function with parameter 1 and use the return
+this allows you to effectively define any line, even a sine way or spiral.
+
+the module will connect each point for you to form a smooth bar.
+
+to give an example of this, here is an image of what the full bar looks like for the function above
+
+notes about roblox studio gui if your unfamiliar (skip if your familiar):
+```
+this uses scaling which means that
+an x coordinate of 0 is all the way on the left, of 1 is all the way on the right,
+same applies to the y coordinate. 
+
+y coordinates go from top to bottom instead, 0 on the y is the top, 1 on the y is the bottom
+```
+end of notes
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/7a237bf9-bd99-40c2-bfb4-e86cfe0d9cc3" />
+
+you can see it doesn't resemble a cubic
+
+note that when getting the value of 
