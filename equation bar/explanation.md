@@ -1,3 +1,6 @@
+#  before you complain about small mishaps
+this has only had 1 version made of it, and i am aware of the mishaps. they aren't huge but they are definitely there. 
+if i get the time and feel like it i will fix it. but lets be honest. nobody is using this even though it's cool.
 # introduction of concept
 
 you will notice that in every video game almost all progression bars are straight lines, this includes health bars, stamina bar, mana bars, loading bars. so on..
@@ -255,3 +258,33 @@ end
 giving
 
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/292a59a1-9edb-4916-a79a-9b51fb46ae6b" />
+
+# changing value shown by bar
+
+```lua
+local barVal=equationBarMod.initEquationBar(
+	frameForBar,
+	0.1, --thickness
+	Color3.new(1,1,1), --white
+	100, --accuracy (number of frames used)
+	equationBarFunction, --function used to define the cubic
+	1 --initial value of bar
+)
+```
+
+the function when setting up the bar returns a number value object, 
+changing the value of it to something between 0 and 1 inclusive will change the bar instantly
+you can change this value smoothly as well, even using tweens.
+this value is also parents to the "frameForBar" you choose so you can reference it that way from other scripts if needed
+
+in this example doing:
+
+```lua
+barVal.Value=0.5
+```
+
+will set the bar to what represents 0.5 for that bar.
+
+making this work with circles or spirals is dramatically easy, writing the function for a circle is simply
+
+you can experiment with it to become more familiar with it, if you read this far you actually might. to be honest, didn't expect anyone to read this. hope you enjoy!
