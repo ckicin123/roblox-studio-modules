@@ -315,7 +315,7 @@ end
 
 giving
 
-<img width="640" height="641" alt="image" src="https://github.com/user-attachments/assets/08003116-0ae2-40b2-b240-c1a236d1918f" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/08003116-0ae2-40b2-b240-c1a236d1918f" />
 
 
 you can experiment with it to become more familiar with it, if you read this far you actually might. to be honest, didn't expect anyone to read this. hope you enjoy!
