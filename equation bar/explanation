@@ -1,1 +1,7 @@
+you will notice that in every video game almost all progression bars are straight lines, this includes health bars, stamina bar, mana bars, loading bars. so on..
 
+i wasn't satisfied with this, if i wanted a bar that fit the shape of a cubic equation, i wanted to be able to get that bar and use it easily in a short time.
+
+make the following observation about how roblox studio's frames work
+
+here is an empty gui:
