@@ -1,3 +1,5 @@
+# introduction of concept
+
 you will notice that in every video game almost all progression bars are straight lines, this includes health bars, stamina bar, mana bars, loading bars. so on..
 
 i wasn't satisfied with this, if i wanted a bar that fit the shape of a cubic equation, i wanted to be able to get that bar and use it easily in a short time.
@@ -25,3 +27,37 @@ doing this with enough frames accurately placed would allow for a smooth health 
 
 so the goal here is, given an equation. make a bar that can have it's value (value being health in the example above) easily.
 
+# using the module 
+
+when using the module to make a cubic health bar the result is:
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/9c56b496-4640-4e54-a4b2-b9c5c68ef94a" />
+
+and when you set this to a 25% value (think of this as 25% health if this were a health bar) you get:
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/790f5091-58cd-489a-a8d5-e2eb9cf42911" />
+
+and all i had to write was the following
+```lua
+local equationBarMod=require(game.ReplicatedStorage.Modules.equationBarModule)
+
+local frameForBar=script.Parent.Frame
+--frame is black
+local function equationBarFunction(i)
+	--works by parametric equations
+	return {
+		0.5+((i-0.5)*0.8), --x coordinate
+		0.5-(1.5*(i-0.5))^3 --y coordinate
+	}
+	--note that the center of the frame is (0.5,0.5)
+end
+
+local barVal=equationBarMod.initEquationBar(
+	frameForBar,
+	0.1, --thickness
+	Color3.new(1,1,1), --white
+	100, --accuracy (number of frames used)
+	equationBarFunction, --function used to define the cubic
+	1
+)
+```
