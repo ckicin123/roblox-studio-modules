@@ -298,7 +298,7 @@ local function equationBarFunction(i)
 end	
 ```
 
-(a circle is self explanatory so an image won't be shown)
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/86ab69fa-12cf-45b7-8a17-0730c86c12dc" />
 
 and a spiral is:
 
@@ -315,7 +315,7 @@ end
 
 giving
 
-<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/08003116-0ae2-40b2-b240-c1a236d1918f" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/7f482aa2-e020-4a5a-9223-cbd3360f97c5" />
 
 
 you can experiment with it to become more familiar with it, if you read this far you actually might. to be honest, didn't expect anyone to read this. hope you enjoy!
