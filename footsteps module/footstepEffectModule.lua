@@ -25,7 +25,6 @@ function module.startFootShadow(footPart,toFilterOut)
 		if rayResult then
 			nextFootRayResult=rayResult
 			wasTouchingFloor=true
-			print("WE GOT THE FLOOR")
 		else
 			if wasTouchingFloor==false then return end
 			wasTouchingFloor=false
@@ -36,13 +35,15 @@ function module.startFootShadow(footPart,toFilterOut)
 			local shadowLV=footPartLV-normalLVDot*normalToSurface	
 
 
-			local footShadowCFrame=CFrame.new(
+			local footShadowCFrame=CFrame.lookAt(
 				nextFootRayResult.Position,
-				nextFootRayResult.Position+shadowLV
+				nextFootRayResult.Position+shadowLV,
+				normalToSurface
 			)
 			
-			--runs when a new part to represent the foot's shadow is made
-      --can be changed to change how the shadow appears
+			
+			--you can edit how the footShadow is done visually here
+			
 			local shadowPart=Instance.new("Part")
 			shadowPart.Parent=footPartFolder
 			shadowPart.Anchored=true
@@ -60,7 +61,7 @@ function module.startFootShadow(footPart,toFilterOut)
 				TweenInfo.new(1),
 				{Transparency=1})
 			dissapearTween:Play()
-			dissapearTween.Ended:Wait()
+			dissapearTween.Completed:Wait()
 			shadowPart:Destroy()
 			
 		end
