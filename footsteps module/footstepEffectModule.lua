@@ -15,7 +15,10 @@ function module.startFootShadow(footPart,toFilterOut)
 	rayParams.FilterType=Enum.RaycastFilterType.Exclude
 	local nextFootRayResult=nil
 	local wasTouchingFloor=false
-	rs.RenderStepped:Connect(function() 		
+	
+	local stepConnection=nil
+	stepConnection=rs.RenderStepped:Connect(function() 
+		
 		local rayDir=(footPart.CFrame*CFrame.Angles(-math.pi/2,0,0)).LookVector*footPart.Size.Y
 		local rayResult=workspace:Raycast(
 			footPart.Position-(rayDir*0.5),
@@ -55,17 +58,19 @@ function module.startFootShadow(footPart,toFilterOut)
 			shadowPart.CFrame=footShadowCFrame
 			
 			
-			task.wait(10)
+			task.wait(5)
 			local dissapearTween=tweenService:Create(
 				shadowPart,
 				TweenInfo.new(1),
-				{Transparency=1})
+				{Size=Vector3.zero})
 			dissapearTween:Play()
-			dissapearTween.Completed:Wait()
+			task.wait(1)
 			shadowPart:Destroy()
 			
 		end
 	end)
+	
+	
 end
 
 return module
