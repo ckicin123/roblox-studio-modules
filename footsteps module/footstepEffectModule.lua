@@ -25,7 +25,7 @@ function module.startFootShadow(footPart,toFilterOut)
 			rayDir,
 			rayParams
 		)
-		if rayResult then
+		if rayResult and rayResult.Instance.CanCollide then
 			nextFootRayResult=rayResult
 			wasTouchingFloor=true
 		else
@@ -72,5 +72,4 @@ function module.startFootShadow(footPart,toFilterOut)
 	
 	
 end
-
 return module
